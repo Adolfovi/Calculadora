@@ -8,7 +8,7 @@
 // - si son diferentes se sustituye
 // En caso de que la última posición de la pantalla sea un número entonces:
 // - hace el calculo y añade el operador pulsado al final
-
+let operation;
 function programm() {
     // DECLARACIÓN DE VARIABLES
     let result = document.querySelector(".result");
@@ -18,7 +18,7 @@ function programm() {
     let equal = document.querySelector(".equal");
     let deleteall = document.querySelector(".deleteall");
     let deleteone = document.querySelector(".delete");
-    let operation = result.innerHTML;
+    
     let comapressed = false;
     let operatorpressed = false;
 
@@ -70,7 +70,7 @@ function programm() {
     });
 
     equal.addEventListener('click', () => {
-        result.innerHTML = eval(result.innerHTML);
+        result.innerHTML = eval(result.innerHTML).toFixed(2);
         operation = result.innerHTML;
     });
 
