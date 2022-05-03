@@ -52,8 +52,12 @@ function programm() {
                 comapressed = false;
                 operatorpressed = true;
                 operation = result.innerHTML;
+            } else if(operatorpressed == true){
+                result.innerHTML = eval(result.innerHTML);
+                result.innerHTML = result.innerHTML + operator.dataset.operator;
+                operatorpressed = false;
+                operation = result.innerHTML;
             }
-
         });
     });
 
