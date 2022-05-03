@@ -77,9 +77,13 @@ function programm() {
         
         if (result.innerHTML.length == 1) {
             result.innerHTML = "0";
+            comapressed = false;
+            operatorpressed = false;
             operation = result.innerHTML;
         } else {
             result.innerHTML = result.innerHTML.slice(0, -1);
+            comapressed = false;
+            operatorpressed = false;
             operation = result.innerHTML;
         }
 
