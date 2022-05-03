@@ -18,26 +18,38 @@ function programm() {
     let equal = document.querySelector(".equal");
     let deleteall = document.querySelector(".deleteall");
     let deleteone = document.querySelector(".delete");
+    let comapressed = false;
+    let operatorpressed = false;
+
     // DECLARACIÓN DE EVENTOS
     numbers.forEach(number => {
         number.addEventListener("click", () => {
             if (result.innerHTML == "0") {
                 result.innerHTML = number.dataset.number;
+                operatorpressed = false;
             } else {
                 result.innerHTML += number.dataset.number;
+                operatorpressed = false;
             }
         });
     });
 
     operators.forEach(operator => {
         operator.addEventListener("click", () => {
-            result.innerHTML = result.innerHTML + operator.dataset.operator;
-            operation = result.innerHTML;
+            if (operatorpressed == false) {
+                result.innerHTML = result.innerHTML + operator.dataset.operator;
+                comapressed = false;
+                operatorpressed = true;
+            }
+
         });
     });
 
     coma.addEventListener('click', () => {
-        result.innerHTML = result.innerHTML + ".";
+        if (comapressed == false) {
+            result.innerHTML = result.innerHTML + ".";
+            comapressed = true;
+        }
     });
 
     equal.addEventListener('click', () => {
@@ -46,13 +58,21 @@ function programm() {
 
     deleteall.addEventListener('click', () => {
         result.innerHTML = "0";
+        comapressed = false;
+        operatorpressed = false;
     });
 
     deleteone.addEventListener('click', () => {
+        
+        
         if (result.innerHTML.length == 1) {
             result.innerHTML = "0";
         } else {
             result.innerHTML = result.innerHTML.slice(0, -1);
         }
+
+
+
+
     });
 }
