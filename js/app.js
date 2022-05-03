@@ -8,7 +8,7 @@ function programm() {
     let coma = document.querySelector(".coma");
     let equal = document.querySelector(".equal");
     let deleteall = document.querySelector(".deleteall");
-
+    let deleteone = document.querySelector(".delete");
     // DECLARACIÓN DE EVENTOS
     numbers.forEach(number => {
         number.addEventListener("click", () => {
@@ -43,6 +43,16 @@ function programm() {
 
     deleteall.addEventListener('click', () => {
         result.innerHTML = "0";
+    });
+
+    deleteone.addEventListener('click', () => {
+        if (parseInt(result.innerHTML) < 10) {
+            result.innerHTML = "0";
+            operation = result.innerHTML;
+        } else {
+            result.innerHTML = result.innerHTML.slice(0, -1);
+            operation = result.innerHTML;
+        }
     });
 
 }
