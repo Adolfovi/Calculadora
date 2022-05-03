@@ -18,19 +18,25 @@ function programm() {
     let equal = document.querySelector(".equal");
     let deleteall = document.querySelector(".deleteall");
     let deleteone = document.querySelector(".delete");
+    let operation = result.innerHTML;
     let comapressed = false;
     let operatorpressed = false;
 
     // DECLARACIÓN DE EVENTOS
     numbers.forEach(number => {
         number.addEventListener("click", () => {
+        
             if (result.innerHTML == "0") {
                 result.innerHTML = number.dataset.number;
                 operatorpressed = false;
+                operation = result.innerHTML;
             } else {
                 result.innerHTML += number.dataset.number;
                 operatorpressed = false;
+                operation = result.innerHTML;
             }
+        
+        
         });
     });
 
@@ -40,6 +46,7 @@ function programm() {
                 result.innerHTML = result.innerHTML + operator.dataset.operator;
                 comapressed = false;
                 operatorpressed = true;
+                operation = result.innerHTML;
             }
 
         });
@@ -49,17 +56,20 @@ function programm() {
         if (comapressed == false) {
             result.innerHTML = result.innerHTML + ".";
             comapressed = true;
+            operation = result.innerHTML;
         }
     });
 
     equal.addEventListener('click', () => {
         result.innerHTML = eval(result.innerHTML);
+        operation = result.innerHTML;
     });
 
     deleteall.addEventListener('click', () => {
         result.innerHTML = "0";
         comapressed = false;
         operatorpressed = false;
+        operation = result.innerHTML;
     });
 
     deleteone.addEventListener('click', () => {
@@ -67,8 +77,10 @@ function programm() {
         
         if (result.innerHTML.length == 1) {
             result.innerHTML = "0";
+            operation = result.innerHTML;
         } else {
             result.innerHTML = result.innerHTML.slice(0, -1);
+            operation = result.innerHTML;
         }
 
 
