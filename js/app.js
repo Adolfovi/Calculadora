@@ -1,4 +1,13 @@
-let operation;
+// Si pulso el boton de punto y no hay ningún operador en la pantalla sólo puedo escribir un punto. En 
+// cambio si hay un operador en la pantalla entonces sólo puedo escribir dos puntos. Descubrir
+// una función que cuente cuantas veces aparece un caracter en un cadena de texto.
+
+// Si pulso un botón de operador y hay un operador en pantalla.
+// En caso de que el operador de la pantalla sea la última posición entonces:
+// - si son iguales no ocurre nada
+// - si son diferentes se sustituye
+// En caso de que la última posición de la pantalla sea un número entonces:
+// - hace el calculo y añade el operador pulsado al final
 
 function programm() {
     // DECLARACIÓN DE VARIABLES
@@ -13,14 +22,10 @@ function programm() {
     numbers.forEach(number => {
         number.addEventListener("click", () => {
             if (result.innerHTML == "0") {
-                result.innerHTML = "";
-                result.innerHTML = result.innerHTML + number.dataset.number;
-                operation = result.innerHTML;
+                result.innerHTML = number.dataset.number;
             } else {
-                result.innerHTML = result.innerHTML + number.dataset.number;
-                operation = result.innerHTML;
+                result.innerHTML += number.dataset.number;
             }
-
         });
     });
 
@@ -33,12 +38,10 @@ function programm() {
 
     coma.addEventListener('click', () => {
         result.innerHTML = result.innerHTML + ".";
-        operation = result.innerHTML;
     });
 
     equal.addEventListener('click', () => {
         result.innerHTML = eval(result.innerHTML);
-
     });
 
     deleteall.addEventListener('click', () => {
@@ -46,13 +49,10 @@ function programm() {
     });
 
     deleteone.addEventListener('click', () => {
-        if (parseInt(result.innerHTML) < 10) {
+        if (result.innerHTML.length == 1) {
             result.innerHTML = "0";
-            operation = result.innerHTML;
         } else {
             result.innerHTML = result.innerHTML.slice(0, -1);
-            operation = result.innerHTML;
         }
     });
-
 }
