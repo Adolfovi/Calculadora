@@ -25,18 +25,23 @@ function programm() {
     // DECLARACIÓN DE EVENTOS
     numbers.forEach(number => {
         number.addEventListener("click", () => {
-        
-            if (result.innerHTML == "0") {
-                result.innerHTML = number.dataset.number;
-                operatorpressed = false;
-                operation = result.innerHTML;
-            } else {
-                result.innerHTML += number.dataset.number;
-                operatorpressed = false;
-                operation = result.innerHTML;
+            if(result.innerHTML.length >= 16){
+                console.log("ERROR, MUCHOS CARÁCTERES EN LA PANTALLA");
+            }else{
+                if (result.innerHTML == "0") {
+                    result.innerHTML = number.dataset.number;
+                    operatorpressed = false;
+                    operation = result.innerHTML;
+                } else {
+                    result.innerHTML += number.dataset.number;
+                    operatorpressed = false;
+                    operation = result.innerHTML;
+                }
             }
-        
-        
+            
+
+
+
         });
     });
 
@@ -73,8 +78,8 @@ function programm() {
     });
 
     deleteone.addEventListener('click', () => {
-        
-        
+
+
         if (result.innerHTML.length == 1) {
             result.innerHTML = "0";
             comapressed = false;
